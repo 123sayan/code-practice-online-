@@ -1,0 +1,40 @@
+class Solution {
+    ListNode reverse(ListNode head)
+    {
+        ListNode curr,prev,front;
+        front=head;
+        curr=head;
+        prev=null;
+        while(curr!=null)
+        {
+            front=front.next;
+            curr.next=prev;
+            prev=curr;
+            curr=front;
+        }
+        return prev;
+    }
+    public boolean isPalindrome(ListNode head) {
+        ListNode fast,slow;
+        slow=head;
+        fast=head.next;
+        if(head==null)
+        return true;
+        while(fast!=null && fast.next!=null)
+        {
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        ListNode head1=reverse(slow.next);
+        while(head1!=null)
+        {
+            if(head.val!=head1.val)
+            {
+                return false;
+            }
+            head=head.next;
+            head1=head1.next;
+        }
+        return true;
+    }
+}
