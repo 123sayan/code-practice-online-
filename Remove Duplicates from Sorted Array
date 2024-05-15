@@ -1,0 +1,19 @@
+public class Solution {
+    public static int removeDuplicates(int[] arr,int n) {
+        // Write your code here.
+       HashMap<Integer,Integer> map=new HashMap<>();
+       for(int i:arr)
+       {
+          if(!map.containsKey(i))
+          {
+              map.put(i, 1);
+          }
+       }
+        int count=0;
+        for(Map.Entry<Integer,Integer>e:map.entrySet())
+        {
+            count++;
+        }
+        return count;
+    }
+}
