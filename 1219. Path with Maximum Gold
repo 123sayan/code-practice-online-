@@ -1,0 +1,33 @@
+class Solution {
+    static int help(int [][]arr,int i,int j,int row,int col)
+    {
+        if(j<0 || i<0 || i>=row || j>=col || arr[i][j]==0)
+        {
+            return 0;
+        }
+        int temp=arr[i][j];
+        arr[i][j]=0;
+        int up=help(arr,i-1,j,row,col);
+        int dn=help(arr,i+1,j,row,col);
+        int right=help(arr,i,j+1,row,col);
+        int left=help(arr,i,j-1,row,col);
+        arr[i][j]=temp;
+        return arr[i][j]+Math.max(Math.max(Math.max(up,dn),left),right);
+    }
+    public int getMaximumGold(int[][] grid) {
+        int row=grid.length;
+        int col=grid[0].length;
+        int max=0;
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                if(grid[i][j]>0)
+                {
+                    max=Math.max(max,help(grid,i,j,row,col));
+                }   
+            }
+        }
+        return max;
+    }
+}
