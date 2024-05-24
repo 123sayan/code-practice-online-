@@ -1,0 +1,15 @@
+public class Solution {
+    public static int isCyclicRotation(String p, String q)  {
+        String ans=p;
+        while(!p.equals(q))
+        {
+            String temp=p.charAt(p.length()-1)+p.substring(0, p.length()-1);
+            if(temp.equals(ans))
+            break;
+            if(temp.equals(q))
+            return 1;
+            p=temp;
+        }
+        return 0;
+    }
+}
