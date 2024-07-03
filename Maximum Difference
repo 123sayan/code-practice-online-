@@ -1,0 +1,18 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static String maximumDifference(int n, int[] arr) {
+        // Write your code here.
+        Arrays.sort(arr);
+        int dif=arr[n-1]-arr[0];
+        if(dif==0)
+        {
+            return "EVEN";
+        }
+        else if(dif%2==0)
+        {
+            return "EVEN";
+        }
+        else return "ODD";
+    }
+}
