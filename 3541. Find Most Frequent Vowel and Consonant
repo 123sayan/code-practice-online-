@@ -1,0 +1,25 @@
+class Solution {
+    public int maxFreqSum(String s) {
+        Map<Character,Integer> res =new HashMap<>();
+        int vawel=0;
+        int cons=0;
+        for(char v:s.toCharArray())
+        {
+            res.put(v,res.getOrDefault(v,0)+1);
+        }
+        for(Map.Entry<Character,Integer> entry: res.entrySet())
+        {
+            char ch=entry.getKey();
+            int count=entry.getValue();
+            if("aeiou".indexOf(ch)>=0)
+            {
+                vawel=Math.max(vawel,count);
+            }
+            else
+            {
+                cons=Math.max(cons,count);
+            }
+        }
+        return vawel+cons;
+    }
+}
